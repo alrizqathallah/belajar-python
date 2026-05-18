@@ -309,3 +309,162 @@ Di bab pertama ini, kita sudah menguasai fondasi yang sangat penting:
   * Bisa membuat dan masuk ek "meja kerja khusus" (*Virtual Environment*)
   * Bisa menyuruh komputer berbicara (`print()`) dan mendengar (`input()`).
   * Bisa menyimpan informasi di dalam kotak penyimpanan (`variabel`).
+
+---
+
+## BAB 2: Tipe Data & Variabel
+
+### Bagian 1
+
+**1. Tujuan Pembelajaran**
+Di bab ini, kita akan mempelajari jenis-jenis informasi yang bisa diproses oleh Python (Tipe Data), cara mengubah tipe data satu ke tipe lainnya, dan aturan penamaan variabel yang sesuai standar industri.
+
+**2. Penjelasan Konsep Utama: Apa itu Tipe Data?**
+Di Bab 1, kita sepakat bahwa variabel adalah "kotak penyiimpanan". Namun, di dunia nyata, kita tidak bisa menyimpan semua hal di kotak yang sama. Jika kita ingin menyinmpan air, kita menggunakan botol, bukan kardus.
+
+Sama halnya dengan Python. Python perlu tahu *jenis* data apa yang sedang ia tangani agar tidak salah memprosesnya. Ada 4 tipe data dasar (fondasi) di Python yang wajib kita ketahui:
+  * **String** (`str`): Digunakan untuk menyimpan **teks**. Ciri utamanya adalah selalu diapit oleh tanda kutip ganda `" "` atau tunggal `' '`.
+    * Contoh: `"Ciputat"`, `"Bengs"`, atau bahkan angka yang dikelilingi kutip seperti `"100"`.
+  * **Integer** (`int`): Digunakan untk menyimpan **bilangan bulat** (angka yang tidak memiliki koma/desimal). Bisa positif atau negatif.
+    * *Contoh*: `25`, `1000`, `-5`.
+  * **Float** (`float`): Digunakan untuk menyimpan **bilangan desimal**. Penting diingat: standar internasional dan Python menggunakan **titik** (`.`) untuk desimal, bukan koma (`,`).
+    * *Contoh*: `3.14`, `65.5`, `-0.01`.
+  * **Boolean** (`bool`): Ini adalah tipe data spesial yang hanya bisa berisi dua kemungkinan: `True` (Benar) atau `False` (Salah). Tipe ini sangat berguna nanti saat kita ingin membuat asisten kita bisa mengambil keputusan. (Catatan: Huruf pertama wajib kapital).
+
+Sebelum kita mencoba menuliskannya ke dalam kode, mari kita uji pemahaman konsep ini.
+
+Jika asisten kita ingin menyimpan data tentang suhu tubuh seseorang, misalnya **36.7 derajat Celcius**, tipe data apa dari keempat pilihan di atas yang paling tepat untuk menyimpan angka tersebut?
+
+**Jawaban:**
+
+> Menggunakan tipe data Float `float`.
+
+### Bagian 2
+
+**Penjelasan Konsep Utama: Memeriksa Tipe Data & F-String**
+  1.  **Mengecek Tipe Data dengan `type()`
+      Terkadang, kita menerima kotak data dan tidak tahu apa isinya. Python memiliki fungsi bawaan bernama `type()` untuk mengintip jenis data di dalam kotak tersebut.
+  2.  **Teks Modern dengan F-String (Format String)**
+      Di Bab 1, kita menggabungkan teks dan variabel menggunakan koma `,`. Mulai sekarang, kita akan menggunakan cara standar industri modern yang disebut **f-string**.
+      Caranya sangat mudah: tambahkan huruf `f` tepat sebelum tanda kutip pembuka, lalu masukkan varibel ke dalam kurung kurawal `{}`. Ini membuat kode jauh lebih rapih dan mudah dibaca.
+
+**Contoh Kode**:
+Buka file `main.py`, hapus isinya, dan coba kode berikut:
+
+```python
+nama = "Bengs"      # String (str)
+umur = 25           # Integer (int)
+suhu = 36.7         # Float (float)
+sedang_belajar = True  # Boolean (bool)
+
+# Menggunakan f-string (perhatikan huruf 'f' di depan tanda kutip)
+print(f"Halo, nama saya {nama} dan saya berumur {umur} tahun.")
+
+# Mengecek tipe data
+print(type(suhu))
+```
+
+**Penjelasan Konsep Utama: Konversi Tipe Data (Type Casting)**
+Ini adalah aturan emas di Python: **Fungsi** `input()` **akan SELALU menghasilkan data berupa String (Teks)**.
+
+**Visualisasi & Analogi**:
+Bayangkan kita memiliki angka balok mainan kayu yang bertuliskan angak `5`. Walaupaun merpresentasikan angka lima, bahannya tetaplah "kayu" (String). Kita tidak bisa menggunakan balok kayu itu untuk operasi matematika sungguhan sebelum kita mengubahnya menjadi "angka asli" (Integer).
+
+JIka kita mengambil umur dari pengguna:
+`umur_pengguna = input("Berapa umurmu? ")`
+Jika pengguna mengetik `25`, komputer menyimpannya sebagai teks `"25"`, bukan angka `25`.
+Jika kita mencoba menghitung `"25" + 5`, komputer akan *error* karena ia tidak tahu cara menambahkan teks dengan angka.
+
+Untuk mengubah bentuk data, kita menggunakan alat pengubah (konversi):
+  * `int()`: Mengubah teks/float menjadi integer. Contoh: `int("25")` menajdi `25`.
+  * `float()`: Mengubah teks/integer menjadi desimal. Contoh: `float("10")` menjadi `10.0`.
+  * `str()`: Mengubah angka menjadi teks. Contoh: `str(100)` menjadi `"100"`.
+
+**Latihan Praktik & Tantangan Logika**:
+Mari kita uji konsep ini. Kita ingin membuat program **kalkulator tahun lahir**.
+  1.  Minta pengguna memasukkan tahun lahir mereka menggunakan `input()`.
+  2.  Hitung umur mereka saat ini (kita bisa gunakan rumus: `2026 - tahun_lahir`).
+  3.  Cetak hasilnya menggunakan **f-string**.
+
+*Petunjuk Penting*: Ingat, hasil dari `input()` adalah String. Kita harus mengubahnya menjadi Integer terlebih dahulu sebelum bisa dikurangi dari 2026.
+
+**Jawaban:**
+
+```python
+nama_pengguna = input("Siapa nama Anda? ")
+tahun_lahir = input("Kapan tahun lahir Anda? ")
+umur_pengguna = 2026 - int(tahun_lahir)
+
+print(f"Halo {nama_pengguna}, umur anda adalah {umur_pengguna} tahun")
+```
+
+```terminal
+(.venv) bengs@Benkz:~/belajar-python$ python3 main.py 
+Siapa nama Anda? Bengs
+Kapan tahun lahir Anda? 1998
+Halo Bengs, umur anda adalah 28 tahun
+(.venv) bengs@Benkz:~/belajar-python$
+```
+
+### Bagian 3
+
+**Penjelasan Konsep Utama: Aturan Penamaan Variabel**
+Saat membuat variabel `nama_pengguna` dan `tahun_lahir`, kita secara tidak sadar sudah menggunakan standar industri yang disebut **Snake_Case**.
+
+Di Python, aturan emas penamaan variabel adalah:
+  1.  **Gunakan huruf kecil semua** dan pisahkan kata dengan **garis bawah** (`_`). Contoh: `total_harga`, bukan `TotalHarga` atau `totalHarga`.
+  2.  **Tidak boleh diawali angaka.** `1_nama` itu salah, `nama_1` itu benar.
+  3.  **Harus deskriptif**. Jangan gunakan singkatan yang membingungkan seperti `x = 28` atau `n = "Bengs"`. Gunakan `umur = 28` dan `nama = "Bengs"`.
+
+**Penjelasan Konsep Utama: Membersihkan Teks (String Methods)**
+Di dunia nyata, kita tidak bisa mengontrol bagaimana pengguna mengetik. Terkadang pengguna tidak sengaja menekan tombol spasi atau salah menggunakan hufuh kapital (misalnya mengetik `bENGS` atau `bengs`).
+
+Python memiliki "alat pembersih otomatis" untuk tipe data String yang disebut **String Methods**. Ini seperti sikat dan sabun untuk membersihkan dat teks kita.
+  * `.upper()`: Mengubah semua huruf menjadi KAPITAL.
+  * `.lower()`: Mengubah semua huruf menjadi kecil.
+  * `.title()`: Mengubah Huruf Pertama Setiap Kata Menjadi Kapital.
+  * `.strip()`: Menghapus spasi ekstra di awal dan di akhir teks.
+
+**Contoh Penggunaan:**
+
+```python
+teks_berantakan = "     bENgs "
+teks_bersih = teks_berantakan.strip().title()     # Menghapus spasi DULU, lalu membuat awalan kapital
+
+print(f"Hasil sebelum dibersihkan: '{teks_berantakan}'")
+print(f"Hasil sebelum dibersihkan: '{teks_bersih}'")
+```
+
+**Mini Project BAB 2: Profiler Pengguna**
+
+Untuk menutup BAB 2, mari kita gabungkan smeua yang sudah kita pelajari (Tipe Data, Konversi Tipe Data, F-String, dan String Methods) ke dalam satu program.
+
+**Misi Kamu:**
+Buat program yang meminta 3 data dari pengguna:
+  1.  **Nama Lengkap** (Pastikan saat dicetak, awal kata selalu huruf kapital menggunakan string method, walaupun pengguna mengitiknya dengan huruf kecil semua).
+  2.  **Tahun Lahir** (Gunakan untuk menghitung umur di tahun 2026).
+  3.  **Tinggi Badan dalam cm** (Ubah input ini menjadi tipe data desimal / `float`, lalu bagi dengan 100 agar berubah menjadi satuan meter. Contoh: 170 menjadi 1.7).
+
+Cetak hasilnya dalam satu kalimat menggunakan F-String, misalnya: "Halo Bengs, umurmu 28 tahun dan tinggi badanmu 1.7 meter."
+
+**Jawaban:**
+
+```Python
+nama_lengkap = input("Halo, siapa namamu? ")
+tahun_lahir = input("Tahun berapa kamu lahir? ")
+tinggi_cm = input("Berapa tinggi badan mu? ")
+
+nama_diperbaiki = nama_lengkap.strip().title()
+umur_pasti = 2026 - int(tahun_lahir)
+tinggi_m = float(tinggi_cm) / 100
+
+print(f"Halo {nama_diperbaiki}, umurmu {umur_pasti} tahun dan tinggi badanmu {tinggi_m} meter")
+```
+
+```terminal
+(.venv) bengs@Benkz:~/belajar-python$ python3 mini-projects/mini_project_2.py
+Halo, siapa namamu? bENgs
+Tahun berapa kamu lahir? 1998
+Berapa tinggi badan mu? 170
+Halo Bengs, umurmu 28 tahun dan tinggi badanmu 1.7 meter
+```
