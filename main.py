@@ -45,12 +45,49 @@
 # print(f"Apakah sisa = 3? : {cek_sisa}")
 
 # Latihan Praktik Bab 4
-usia_pengguna = int(input("Masukkan usia Anda saat ini: "))
+# usia_pengguna = int(input("Masukkan usia Anda saat ini: "))
 
-if usia_pengguna < 12:
-  print(f"Usia Anda adalah {usia_pengguna} tahun, harga tiket Anda adalah: Rp 25.000")
-elif usia_pengguna <= 60:
-    print(f"Usia Anda adalah {usia_pengguna} tahun, harga tiket Anda adalah: Rp 50.000")
-else:
-  print(f"Usia Anda adalah {usia_pengguna} tahun, harga tiket Anda adalah: Rp 35.000")
+# if usia_pengguna < 12:
+#   print(f"Usia Anda adalah {usia_pengguna} tahun, harga tiket Anda adalah: Rp 25.000")
+# elif usia_pengguna <= 60:
+#     print(f"Usia Anda adalah {usia_pengguna} tahun, harga tiket Anda adalah: Rp 50.000")
+# else:
+#   print(f"Usia Anda adalah {usia_pengguna} tahun, harga tiket Anda adalah: Rp 35.000")
 
+# Latihan Praktik BAB 5: Bagian 1
+# def hitung_diskon(harga_asli, persen_diskon):
+#   potongan_harga = (persen_diskon / 100) * harga_asli
+  
+#   harga_akhir = harga_asli - potongan_harga
+  
+#   print(f'Harga setelah diskon adalah: Rp {harga_akhir}')
+  
+# hitung_diskon(100000, 20)
+# hitung_diskon(50000, 10)
+
+# Latihan Praktik BAB 5: Bagian 2
+# def hitung_diskon(harga_asli, persen_diskon):
+#   potongan_harga = (persen_diskon / 100) * harga_asli
+  
+#   harga_akhir = harga_asli - potongan_harga
+  
+#   return harga_akhir
+  
+# harga_sepatu = hitung_diskon(200000, 15)
+# harga_baju = hitung_diskon(100000, 50)
+# total_bayar = harga_sepatu + harga_baju
+
+# print(f"Total yang harus dibayarkan adalah Rp {total_bayar:,}")
+
+# Latihan BAB 5: Bagian 3
+def jumlahkan_semua(*harga_barang):
+  total = 0
+  
+  for harga in harga_barang:
+    total += harga
+    
+  return total
+
+hasil = jumlahkan_semua(10000, 5000, 20000, 15000)
+
+print(f"Total harga semua barang: Rp {hasil:,}")

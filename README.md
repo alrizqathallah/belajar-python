@@ -877,3 +877,262 @@ PIN Salah. Kesempatan tersisa: 0
 Akun Terblokir!
 (.venv) bengs@Benkz:~/belajar-python$
 ```
+
+--- 
+
+## BAB 5: Fungsi (Functions)
+
+### Bagian 1
+
+**1. Tujuan Pembelajaran**
+
+Di bab ini, kita akan belajar cara "membungkus" puluhan baris kode menjdadi satu alat praktis yang bisa kita panggil berulang kali tanpa harus mengetik kodenya dari nol. Ini adalah fondasi dari **Modularitas** (memcah program besar menjadi bagian-bagian kecil yang rapi).
+
+**2. Penjelasan Konsep Utama: Apa itu Fungsi?**
+
+Sejauh ini, setiap kali kita ingin melakukan sesuatu, kita menulis kode secara berurutan. Masalahnya, bagaimana jika di dalam aplikasi yang sama, kita butuh mengecek PIN *login* di 5 halaman yang berbeda? Menulis ulang *looping* `while` pengecekan PIN sebanyak 5 kali tentu sangat tidak efisien dan rentan terjadi kesalahan (*error*).
+
+**Fungsi (Function)** adalah sekumpulan kode yang diberi nama khusus. Kode di dalamnya **tidak akan berjalan** sampai kita memanggil nama tersebut.
+
+**Visualisasi & Analogi**:
+
+Bayangkan sebuah **mesin pembuat jus**.
+
+Kita tahu bahwa mesin itu bertugas menghancurkan buah menjadi minuman. Saat kita ingin membuat jus, kita tidak perlu merakit pisau dan motor dinamonya dari nol setiap kali. Kita cukup memasukkan buah (Input), menekan tombol "Blender" (Memanggil Fungsi), dan mesin akan mengeluarkan jusnya (Output).
+
+Di Python, kita mendefinisikan fungsi menggunakan kata kunci `def` (singkatan dari *define*).
+
+**Sintaks Dasar**:
+
+```python
+# 1. MENDOBRAK (Mendefinisikan) FUNGSI
+def sapa_pengguna():
+  print("Halo! Selamat datang di aplikasi kami.")
+  print("Semoga harimu menyenangkan.")
+
+# Kode di atas belum menghasilkan apa-apa di layar sampai kita memanggilnya
+
+# 2. MEMANGGIL FUNGSI
+sapa_pengguna()   # Memanggil mesin untuk bekerja
+sapa_pengguna()   # Memanggil lagi untuk kedua kalinya
+```
+
+**3. Penjelsan Konsep Utama: Parameter dan Argument (Input Fungsi)**
+
+Mesin jus tidak akan berguna jika kita tidak bisa memasukkan buah ke dalamnya. Sama halnya dengan fungsi. Kita bisa memberikan data (buah) ke dalam fungsi agar diproses. Data yang diterima oleh fungsi disebut **Parameter**.
+
+```python
+# 'nama' di dalam kurung adalah Parameter (seperti corong tempat masuk buah)
+def sapa_personal(nama):
+  print(f"Halo, pahlawan {nama}! Selamat bertugas.")
+
+# Saat panggilan, kita memerikan Argument (buah yang sesungguhnya)
+sapa_personal("Bengs")
+sapa_personal("Andi")
+```
+
+**4. Kesalahan Umum & Best Practices**
+
+  * **Kesalahan**: Lupa menambahkan tanda kurung `()` saat memanggil fungsi. Jika kita hanya mengetik `sapa_personel` tanpa kurung, Python hanya akan memberi tahu bahwa itu adalah sebuah fungsi, tetapi tidak menjalankannya.
+  * **Best Practice**: Gunakan kata kerja untuk menamai fungsi, karena fungsi melakukan sebuah tindakan. Contoh yang baik: `hitung_total()`, `cek_kondisi()`, `simpan_data()`.
+
+**Latihan Praktik BAB 5: Kalkulator Diskon Sederhana**
+
+Mari kita uji pemahaman tentang pembuatan fungsi dasar beserta parameternya.
+
+**Spesifikasi Tugas**:
+
+  1.  Buat sebuah fungsi bernama `hitung_diskon`.
+  2.  Fungsi tersebut harus bisa menerima dua input (parameter): `harga_asli` dan `persen_diskon`.
+  3.  Di dalam fungsi tersebut:
+      1.  Hitung jumlah potongan harga dengan rumus matematika: `(persen_diskon / 100) * harga_asli`
+      2.  Hitung harga akhir setelah didiskon: `harga_asli - potongan`
+      3.  Cetak harga akhirnya menggunakan F-String, contoh: `"Harga setelah diskon adalah: Rp [harga_akhir]"`
+  4. Di bagian bawah (di luar fungsi), **panggil fungsi tersebut dua kali** dengan data yang berbeda. Misalnya:
+     1. Barang pertama: harga 100.000, diskon 20%
+     2. Barang kedua: harga 50.000, diskon 10%
+
+**Jawaban:**
+
+```python
+def hitung_diskon(harga_asli, persen_diskon):
+  potongan_harga = (persen_diskon / 100) * harga_asli
+  
+  harga_akhir = harga_asli - potongan_harga
+  
+  print(f'Harga setelah diskon adalah: Rp {harga_akhir}')
+  
+hitung_diskon(100000, 20)
+hitung_diskon(50000, 10)
+```
+
+```terminal
+(.venv) bengs@Benkz:~/belajar-python$ python3 main.py
+Harga setelah diskon adalah: Rp 80000.0
+Harga setelah diskon adalah: Rp 45000.0
+(.venv) bengs@Benkz:~/belajar-python$ 
+```
+
+### Bagian 2
+
+**1. Tujuan Pembelajaran**
+
+Di bagian ini, kita akan memahami perbedaan krusial antara sekedar mencetak hasil (`print`) versus "mengembalikan" hasil ke sistem (`return`), serta mamahami batasan wilayah memori (Scope) dari sebuah variabel.
+
+**2. Penjelasan Konsep Utama: `return` vs `print()`**
+
+Pada kodemu sebelumnya, fungsi `hitung_diskon` langsung mencetak harga ke layar menggunakan `print()`. Ini terlihat bagus, tapi **komputer tidak menyimpan hasil perhitungan itu**.
+
+**Visualisasi & Analogi**:
+
+Bayangkan kita menyuruh asisten kita (fungsi) pergi ke pasar membawa uang (Parameter/Input) untuk membeli apel.
+
+  * Jika menggunakan `print()`: Asisten kita membeli apel, memakannya sendiri di pasar, lalu menelepon kita: "*Bos, apelnya enak!*". Kita tahu hasilnya, tapi **kita tidak medapatkan apelnya ditangan kita** untuk diolah lagi menjadi jus.
+  * Jika menggunakan `return`: Asisten kita membeli apel, membawanya pulang dan **menyerahkannya ke tangan kita** (Output). Sekarang, kita bisa menyimpan apel itu di kulkas (Variabel) atau langsung memblendernya (Perhitungan lanjutan).
+
+Di aplikasi nyata (seperti Tokopedia atau Shopee), sistem butuh hasil perhitungan diskon untuk dijumlahkan dengan ongkos kirim. Jika hanya di-`print`, sistem tidak bisa menjumlahkannya.
+
+**Sintaks Dasar `return`**:
+
+```python
+def kalikan_dua(angka):
+  hasil = hasil * 2
+  return hasil    # Mengembalikan nilai ke pemanggilnya, BUKAN mencetaknya
+
+# Karena fungsi ini mengembalikan nilai, kita bisa menyimpannya ke dalam kotak (varibel)
+nilai_baru = kalikan_dua(10)
+
+# Sekarang kita bisa menggunakan nilai itu untuk hal lain
+print(f"Hasilnya jika ditambah 5 adalah: {nilai_baru + 5}")
+```
+
+*Catatan Penting: Saat Python membaca kata `return`, fungsi akan **langsung berhenti bekerja**. Kode apa pun yang ditulis di bawah baris `return` di dalam fungsi tersebut tidak akan pernah dieksekusi*.
+
+**3. Penjelasan Konsep Utama: Ruang Lingkup Varibel (Scope)**
+
+Kenapa kita tidak bisa langsung mengambil variabel `potongan_harga` dari kode sebelumnya? Karena varibel di Python memiliki "wilayah kekuasaan" (scope).
+
+  * **Local Scope**: Variabel yang dibuat **di dalam** fungsi (seperti `potongan_harga` dan `harga_akhir`) hanya hidup di dalam pabrik (fungsi) itu. Jalan raya (kode di luar fungsi) tidak tahu varibel itu ada.
+  * **Global Scope**: Varibel yang dibuat di luar fungsi (di baris paling kiri tanpa identitas) bisa dilihat oleh semua orang, termasuk oleh fungsi.
+
+**Latihan Praktik BAB 5**
+
+**Bagian 2**: **Sistem Keranjang Belanja**
+
+Mari kita "tingkatkan" (refactor) fungsi yang sudah kita buat sebelumnya agar lebih bertaraf industri.
+
+**Spesifikasi Tugas**:
+
+  * Ubah fungsi `hitung_diskon`. Hapus baris `print(...)` di dalamnya, dan ganti dengan printah untuk **mengembalikan** (`return`) nilai dari `harga_akhir`.
+  * Di luar fungsi, panggil fungsi tersebut untuk menghitung dua barang:
+     *  Sepatu: Harga 200.000, Diskon 15%
+     *  Baju: Harga 100.000, Diskon 50%
+  * **Simpan** hasil dari masing-masing pemanggilan fungsi tersebut ke dalam varibel baru (misal: `harga_sepatu` dan `harga_baju`).
+  * Buat varibel baru bernama `total_bayar` yang merupakan hasil penjumlahan `harga_sepatu` dan `harga_baju`.
+  * Terakhir, `print()` variabel `total_bayar` tersebut menggunakan f-string. (Misal: "*Total yang harus dibayar adalah Rp ...*")
+
+**Jawaban:**
+
+```python
+# Latihan Praktik BAB 5: Bagian 2
+def hitung_diskon(harga_asli, persen_diskon):
+  potongan_harga = (persen_diskon / 100) * harga_asli
+  
+  harga_akhir = harga_asli - potongan_harga
+  
+  return harga_akhir
+  
+harga_sepatu = hitung_diskon(200000, 15)
+harga_baju = hitung_diskon(100000, 50)
+total_bayar = harga_sepatu + harga_baju
+
+print(f"Total yang harus dibayarkan adalah Rp {total_bayar:,}")
+```
+
+```terminal
+(.venv) bengs@Benkz:~/belajar-python$ python3 main.py
+Total yang harus dibayarkan adalah Rp 220,000.0
+(.venv) bengs@Benkz:~/belajar-python$ 
+```
+
+### Bagian 3
+
+**1. Tujuan Pembelajaran**
+
+Di bagian ini, kita akan belajar cara mendobrak batasan jumlah parameter. Kita akan membuat fungsi yang bisa menerima berapapun jumlah *input* yang diberikan oleh pengguna, serta mengenal fungsi sebaris (*Lambda*).
+
+**2. Penjelasan Konsep Utama: `*args` (Arguments)**
+
+Pada kode sebelumnya, fungsi `hitung_diskon` meminta persis 2 parameter `(harga_asli, persen_diskon)`. Jika kita memasukkan 3 angka, program akan *error*.
+
+Tapi bagaimana jiak kita ingin membuat alat `hitung_total_belanja()` dan kita tidak tahu apakah pelanggan akan membeli 1, 5 atau 100 barang?
+
+Di sinilah `*args` berperan. Tanda bintang `*` di depan parameter adalah keajaibannya. Ia bertindak seperti "kantong belanja ajaib". Berapa pun jumlah data yang kita masukkan, Python akan membungkusnya ke dalam stau kantong tersebut.
+
+**Contoh Kode**
+
+```python
+# Tanda * memberitahu Python: "Terima berapapun argumen yang masuk!"
+def sapa_banyak_orang(*nama_orang):
+  # Karena nama_orang sekarang adalah sebuah "kantong", kita bisa menggunakan loop
+  for nama in nama_orang:
+    print(f"Halo, {nama}!")
+
+# Kita bisa memasukkan 1, 4, atau 100 nama tanpa error
+sapa_banyak_orang("Bengs", "Andi", "Budi", "Siti")
+```
+
+(*Catatan industri: Kata `args` hanyalah kebiasaan/standar. Kita bebas menamainya `*nama_orang`, `*angka`, atau apa pun, selama ada tanda bintang di depannya*).
+
+Ada juga pasangannya yaitu `*kwargs` (Keyword Arguments) dengan dua bintang. Ini digunakan jika data kita memiliki label (seperti `nama = "Bengs", umur = 28`). Namun, kita akan mendalaminya nanti di BAB 6 saat kita membahas struktur data *Dictionary*.
+
+**3. Penjelasan Konsep Utama: Lambda (Fungsi Tanpa Nama)**
+
+Kadang, di industri kita butuh fungsi matematika yang sangat sederhana dan hanya dipakai sekali. Terasa boros baris jika harus menulis blok `def` yang panjang. Python punya jalan pintas untuk membuat fungsi di dalam satu baris, yang disebut `lambda`.
+
+```python
+# 1. Menggunakan def (Cara biasa)
+def kuadrat(x):
+  return x * x
+
+# 2. Menggunakan Lambda (Cara super singkat)
+# Sintaks: variabel = lambda parameter : nilai_yang_di_return
+kuadrat_cepat = lambda x: x * x
+
+print(kuadrat_cepat(5))   # Hasilnya 25
+```
+
+**Latihan Praktik BAB 5: Kalkulator Keranjang Dinamis**
+
+Mari kita uji pemahaman tentang kantong ajaib `*args`. Ini sangat sering digunakan untuk membuat kalkulator data massal.
+
+**Spesifiksi Tugas**:
+
+  1.  Buat sebuah fungsi bernama `jumlahkan_semua`.
+  2.  Fungsi ini hanya menerima satu parameter bertanda bintang (misalnya `*harga_barang`).
+  3.  Di dalam fungsi, buat variabel `total = 0`.
+  4.  Gunakan perulangan `for` untuk membedah isi `harga_barang`, dan tambahkan setiap harganya ke dalam variabel `total` (ingat materi operator `+=`?).
+  5.  Terakhir, `return` nilai `total` tersebut.
+  6.  Di luar fungsi, panggil fungsi tersebut dengan memasukkan **4 angka sembarang** (misal: 10000, 5000, 20000, 15000), simpan hasilnya di sebuah variabel, dan `print()` dengan rapi.
+
+**Jawaban:**
+
+```python
+def jumlahkan_semua(*harga_barang):
+  total = 0
+  
+  for harga in harga_barang:
+    total += harga
+    
+  return total
+
+hasil = jumlahkan_semua(10000, 5000, 20000, 15000)
+
+print(f"Total harga semua barang: Rp {hasil:,}")
+```
+
+```terminal
+(.venv) bengs@Benkz:~/belajar-python$ python3 main.py
+Total harga semua barang: Rp 50,000
+(.venv) bengs@Benkz:~/belajar-python$ 
+```
