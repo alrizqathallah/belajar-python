@@ -320,6 +320,7 @@ Di bab pertama ini, kita sudah menguasai fondasi yang sangat penting:
 Di bab ini, kita akan mempelajari jenis-jenis informasi yang bisa diproses oleh Python (Tipe Data), cara mengubah tipe data satu ke tipe lainnya, dan aturan penamaan variabel yang sesuai standar industri.
 
 **2. Penjelasan Konsep Utama: Apa itu Tipe Data?**
+
 Di Bab 1, kita sepakat bahwa variabel adalah "kotak penyiimpanan". Namun, di dunia nyata, kita tidak bisa menyimpan semua hal di kotak yang sama. Jika kita ingin menyinmpan air, kita menggunakan botol, bukan kardus.
 
 Sama halnya dengan Python. Python perlu tahu *jenis* data apa yang sedang ia tangani agar tidak salah memprosesnya. Ada 4 tipe data dasar (fondasi) di Python yang wajib kita ketahui:
@@ -342,6 +343,7 @@ Jika asisten kita ingin menyimpan data tentang suhu tubuh seseorang, misalnya **
 ### Bagian 2
 
 **Penjelasan Konsep Utama: Memeriksa Tipe Data & F-String**
+
   1.  **Mengecek Tipe Data dengan `type()`
       Terkadang, kita menerima kotak data dan tidak tahu apa isinya. Python memiliki fungsi bawaan bernama `type()` untuk mengintip jenis data di dalam kotak tersebut.
   2.  **Teks Modern dengan F-String (Format String)**
@@ -349,6 +351,7 @@ Jika asisten kita ingin menyimpan data tentang suhu tubuh seseorang, misalnya **
       Caranya sangat mudah: tambahkan huruf `f` tepat sebelum tanda kutip pembuka, lalu masukkan varibel ke dalam kurung kurawal `{}`. Ini membuat kode jauh lebih rapih dan mudah dibaca.
 
 **Contoh Kode**:
+
 Buka file `main.py`, hapus isinya, dan coba kode berikut:
 
 ```python
@@ -368,6 +371,7 @@ print(type(suhu))
 Ini adalah aturan emas di Python: **Fungsi** `input()` **akan SELALU menghasilkan data berupa String (Teks)**.
 
 **Visualisasi & Analogi**:
+
 Bayangkan kita memiliki angka balok mainan kayu yang bertuliskan angak `5`. Walaupaun merpresentasikan angka lima, bahannya tetaplah "kayu" (String). Kita tidak bisa menggunakan balok kayu itu untuk operasi matematika sungguhan sebelum kita mengubahnya menjadi "angka asli" (Integer).
 
 JIka kita mengambil umur dari pengguna:
@@ -381,7 +385,9 @@ Untuk mengubah bentuk data, kita menggunakan alat pengubah (konversi):
   * `str()`: Mengubah angka menjadi teks. Contoh: `str(100)` menjadi `"100"`.
 
 **Latihan Praktik & Tantangan Logika**:
+
 Mari kita uji konsep ini. Kita ingin membuat program **kalkulator tahun lahir**.
+
   1.  Minta pengguna memasukkan tahun lahir mereka menggunakan `input()`.
   2.  Hitung umur mereka saat ini (kita bisa gunakan rumus: `2026 - tahun_lahir`).
   3.  Cetak hasilnya menggunakan **f-string**.
@@ -409,17 +415,21 @@ Halo Bengs, umur anda adalah 28 tahun
 ### Bagian 3
 
 **Penjelasan Konsep Utama: Aturan Penamaan Variabel**
+
 Saat membuat variabel `nama_pengguna` dan `tahun_lahir`, kita secara tidak sadar sudah menggunakan standar industri yang disebut **Snake_Case**.
 
 Di Python, aturan emas penamaan variabel adalah:
+
   1.  **Gunakan huruf kecil semua** dan pisahkan kata dengan **garis bawah** (`_`). Contoh: `total_harga`, bukan `TotalHarga` atau `totalHarga`.
   2.  **Tidak boleh diawali angaka.** `1_nama` itu salah, `nama_1` itu benar.
   3.  **Harus deskriptif**. Jangan gunakan singkatan yang membingungkan seperti `x = 28` atau `n = "Bengs"`. Gunakan `umur = 28` dan `nama = "Bengs"`.
 
 **Penjelasan Konsep Utama: Membersihkan Teks (String Methods)**
+
 Di dunia nyata, kita tidak bisa mengontrol bagaimana pengguna mengetik. Terkadang pengguna tidak sengaja menekan tombol spasi atau salah menggunakan hufuh kapital (misalnya mengetik `bENGS` atau `bengs`).
 
 Python memiliki "alat pembersih otomatis" untuk tipe data String yang disebut **String Methods**. Ini seperti sikat dan sabun untuk membersihkan dat teks kita.
+
   * `.upper()`: Mengubah semua huruf menjadi KAPITAL.
   * `.lower()`: Mengubah semua huruf menjadi kecil.
   * `.title()`: Mengubah Huruf Pertama Setiap Kata Menjadi Kapital.
@@ -440,7 +450,9 @@ print(f"Hasil sebelum dibersihkan: '{teks_bersih}'")
 Untuk menutup BAB 2, mari kita gabungkan smeua yang sudah kita pelajari (Tipe Data, Konversi Tipe Data, F-String, dan String Methods) ke dalam satu program.
 
 **Misi Kamu:**
+
 Buat program yang meminta 3 data dari pengguna:
+
   1.  **Nama Lengkap** (Pastikan saat dicetak, awal kata selalu huruf kapital menggunakan string method, walaupun pengguna mengitiknya dengan huruf kecil semua).
   2.  **Tahun Lahir** (Gunakan untuk menghitung umur di tahun 2026).
   3.  **Tinggi Badan dalam cm** (Ubah input ini menjadi tipe data desimal / `float`, lalu bagi dengan 100 agar berubah menjadi satuan meter. Contoh: 170 menjadi 1.7).
@@ -476,10 +488,13 @@ Halo Bengs, umurmu 28 tahun dan tinggi badanmu 1.7 meter
 ### Bagian 1
 
 **1. Tujuan Pembelajaran**
+
 Di bagian pertama bab ini, kita akan menguasai cara menjadikan Python sebagai kalkulator super canggih (Operator Aritmatika) dan bagaimana menyuruh Python membandingkan dua buah data untuk mencari kebenaran (Operator Perbandingan).
 
 **2. Penjelasan Konsep Utama: Operator Aritmatika (Matematika)**
+
 Sama seperti matematika dasar di sekolah, Python menggunakan simbol untuk menghitung. Namun, ada beberapa simbol khusus yang menjadi "senjata rahasia" para *programmer*.
+
   * `+` (Tambah) dan `-` (kurang)
   * `*` (Kali) -> *Perhatikan: kita menggunakan bintang/asterisk, bukan "x"*.
   * `/` (Bagi) -> *Menghasilkan angka desimal (`float`). Contoh: `10/2` menjadi `5.0`.*
@@ -489,18 +504,23 @@ Sama seperti matematika dasar di sekolah, Python menggunakan simbol untuk menghi
   * `%` (Modulus / Sisa Bagi) -> Ini yang **paling sering dipakai di industri**. Modulus mengitung *sisa* dari sebuah pembagian.
 
 **Visualisasi & Analogi Modulus (`%`)**
+
 Bayangkan kita punya 10 butir peluru dan kita harus membaginya rata kepada 3 rekan tim.
 Masing-masing rekan mendapatkan 3 butir. Nah, ada **sisa 1 peluru** ditangan, bukan?
 Itulah Modulus! `10 % 3` hasilnya adalah `1`.
 (*Bocoran: Modulus sangat sering digunakan untuk mengecek apakah sebuah angka ganjil atau genap. Angka genap jika di-modulus 2 hasilnya pasti 0*).
 
 **3. Penjelasan Konsep Utama: Operator Perbandingan**
+
 Python bisa bertindak sebagai juri. Kita bisa meminta Python membandingkan dua nilai, dan ia akan **selalu** menjawab dengan tipe data Boolean: `True` (Benar) atau `False` (Salah).
+
   * `==` (Sama Dengan) -> Sangat penting! Sama dengan ganda digunakan untuk membandingkan. Sama dengan tunggal `=` hanya untuk memasukkan barang ke dalam kotak variabel.
   * `!=` (Tidak Sama Dengan) -> Tanda seru artinya "Tidak".
   * `>` (Lebih besar dari) dan `<` (lebih kecil dari)
   * `>=` (Lebih besar atau sama dengan) dan `<=` (Lebih kecil atau sama dengan)
+
 **Contoh Kode: Membandingkan Status**
+
 ```python
 peluru_senjata = 0
 
@@ -512,12 +532,16 @@ print(f"Apakah harus reload senjata? {butuh_reload}")
 *Hasilnya akan mencetak `True` karena peluru memang bernilai 0*.
 
 **Kesalahan Umum Pemula**
+
   * **Kesalahan**: Menggunakan `=` saat ingin membandingkan. `if harga = 10000:` (Ini akan menyebabkan *Error* besar).
   * **Solusi**: Ingat, `=` untuk **memberi** nilai (Assignment), `==` untuk **mengecek** nilai (comparasion).
 
 **Latihan Praktik**
+
 Mari kita uji konsep Aritmatika dan Perbandingan ini dalam satu kode.
+
 Tulis program sederhana yang melakukan hal berikut:
+
   * Buat variabel `jumlah_hari` dengan nilai `45`
   * Hitung ada **berapa minggu penuh** dalam 45 hari menggunakan *Floor Division* (`//`), simpan di variabel `minggu`. (*Petunjuk: 1 minggu = 7 hari*)
   * Hitung **sisa harinya** menggunakan Modulus (`%`), simpan di variabel `sisa_hari`.
@@ -550,7 +574,9 @@ Apakah sisa = 3? : True
 ### Bagian 2
 
 **1. Penjelasan Konsep Utama: Operator Logika**
+
 Dalam dunia nyata, keputasan sering kali tidak hanya bergantung pada satu syarat, melainkan gabungan dari beberapa syarat. Python menggunakan tiga operator logika utama: `and`, `or`, dan `not`.
+
   * `and` (**Dan**): Akan menghasilkan `True` **HANYA JIKA** semua syarat benilai `True`.
     * *Anologi*: Syarat melamar kerja adalah "Punya Ijazah" `and` "Lulus Tes". Jika kamu punya ijazah tapi gagal tes, kamu tidak terima (`False`).
   * `or` (**Atau**): Akan menghasilkan `True` **JIKA SALAH SATU SAJA** syarat bernilai `True`.
@@ -569,13 +595,17 @@ print(f"Boleh mengemudi? {boleh_mengemudi}")    # Hasilnya: True
 ```
 
 **2. Penjelasan Konsep Utama: Operator Assignment Gabungan (Augmented Assignment)**
+
 Seorang *programmer* sangat menyukai efisien (malas mengetik hal yang berulang). Jika kita memiliki variabel `skor = 10` dan ingin menambahkan 5 ke dalamnya, cara dasar yang kita gunakan adalah `skor = skor + 5`.
+
 Namun, di industri, kita menggunakan jalan pintas:
+
   * `+=` (Tambah dan masukkan) -> `skor += 5`
   * `-=` (Kurang dan masukkan) -> `skor -= 5`
   * `*=` (Kali dan masukkan) -> `skor *= 2`
 
 **3. Penjelasan Konsep Utama: Operator Membership**
+
 Digunakan untuk mengecek apakah sebuah elemen "berada di dalam" elemen yang lebih besar. Menggunakan `in` atau `not in`.
 
 ```python
@@ -585,12 +615,16 @@ print(f"Apakah ada kata Bengs? {cek_nama}")   # Hasilnya: True
 ```
 
 **Kesalahan Umum & Best Practices**
+
   * **Kesalahan**: Menggabungkan logikan tanpa tanda kurung yang jelas. Misalnya `a > 5 and b < 10 or c == 0`. Ini bisa membuat Python (dan kita sendiri) bingung mana yang dikerjakan duluan.
   * **Solusi**: Selalu gunakan tanda kurung `()` untuk mengelompokkan logika agar mudah dibaca, contoh: `(a > 5 and b < 10) or (c == 0)`.
 
 **Mini Project BAB 3: Sistem Pengecekan Syarat Beasiswa**
+
 Untuk membuktikan kita sudah menguasai seluruh fungsi Operator dan Ekspresi, mari kita buat sebuah mesin pengecek kelulusan beasiswa.
+
 **Spesifikasi Tugas**:
+
   * Buat variabel penampung nilai siswa: `nilai_ujian = 70` dan `kehadiran = 85`.
   * Siswa tersebut ternyata mendapatkan nilai tambahan (*bonus*) karena aktif di kelas. Gunakan **Operator Assignment Gabungan** (`+=`) untuk menambahkan `nilai_ujian` sebanyak `10` poin.
   * Buat variabel pengecek `lulus_beasiswa` menggunakan **Operator Logika**. Syarat lulus adalah:
