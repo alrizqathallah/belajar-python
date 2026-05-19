@@ -468,3 +468,153 @@ Tahun berapa kamu lahir? 1998
 Berapa tinggi badan mu? 170
 Halo Bengs, umurmu 28 tahun dan tinggi badanmu 1.7 meter
 ```
+
+## BAB 3: Operator & Ekspresi
+
+### Bagian 1
+
+**1. Tujuan Pembelajaran**
+Di bagian pertama bab ini, kita akan menguasai cara menjadikan Python sebagai kalkulator super canggih (Operator Aritmatika) dan bagaimana menyuruh Python membandingkan dua buah data untuk mencari kebenaran (Operator Perbandingan).
+
+**2. Penjelasan Konsep Utama: Operator Aritmatika (Matematika)**
+Sama seperti matematika dasar di sekolah, Python menggunakan simbol untuk menghitung. Namun, ada beberapa simbol khusus yang menjadi "senjata rahasia" para *programmer*.
+  * `+` (Tambah) dan `-` (kurang)
+  * `*` (Kali) -> *Perhatikan: kita menggunakan bintang/asterisk, bukan "x"*.
+  * `/` (Bagi) -> *Menghasilkan angka desimal (`float`). Contoh: `10/2` menjadi `5.0`.*
+**Senjata Rahasia Python:**
+  * `//` (Pembagian Bulat / *Floor Division*) -> Membagi angka, tapi membuang desimalnya (dibulatkan ke bawah). Contoh `10 // 3` hasilnya `3`.
+  * `**` (Pangkat) -> Contoh: `2 ** 3` artinya 2 pangkat 3 (hasilnya 8).
+  * `%` (Modulus / Sisa Bagi) -> Ini yang **paling sering dipakai di industri**. Modulus mengitung *sisa* dari sebuah pembagian.
+
+**Visualisasi & Analogi Modulus (`%`)**
+Bayangkan kita punya 10 butir peluru dan kita harus membaginya rata kepada 3 rekan tim.
+Masing-masing rekan mendapatkan 3 butir. Nah, ada **sisa 1 peluru** ditangan, bukan?
+Itulah Modulus! `10 % 3` hasilnya adalah `1`.
+(*Bocoran: Modulus sangat sering digunakan untuk mengecek apakah sebuah angka ganjil atau genap. Angka genap jika di-modulus 2 hasilnya pasti 0*).
+
+**3. Penjelasan Konsep Utama: Operator Perbandingan**
+Python bisa bertindak sebagai juri. Kita bisa meminta Python membandingkan dua nilai, dan ia akan **selalu** menjawab dengan tipe data Boolean: `True` (Benar) atau `False` (Salah).
+  * `==` (Sama Dengan) -> Sangat penting! Sama dengan ganda digunakan untuk membandingkan. Sama dengan tunggal `=` hanya untuk memasukkan barang ke dalam kotak variabel.
+  * `!=` (Tidak Sama Dengan) -> Tanda seru artinya "Tidak".
+  * `>` (Lebih besar dari) dan `<` (lebih kecil dari)
+  * `>=` (Lebih besar atau sama dengan) dan `<=` (Lebih kecil atau sama dengan)
+**Contoh Kode: Membandingkan Status**
+```python
+peluru_senjata = 0
+
+# Python akan mengecek: Apakah peluru sama dengan 0?
+butuh_reload = (peluru_senjata == 0)
+
+print(f"Apakah harus reload senjata? {butuh_reload}")
+```
+*Hasilnya akan mencetak `True` karena peluru memang bernilai 0*.
+
+**Kesalahan Umum Pemula**
+  * **Kesalahan**: Menggunakan `=` saat ingin membandingkan. `if harga = 10000:` (Ini akan menyebabkan *Error* besar).
+  * **Solusi**: Ingat, `=` untuk **memberi** nilai (Assignment), `==` untuk **mengecek** nilai (comparasion).
+
+**Latihan Praktik**
+Mari kita uji konsep Aritmatika dan Perbandingan ini dalam satu kode.
+Tulis program sederhana yang melakukan hal berikut:
+  * Buat variabel `jumlah_hari` dengan nilai `45`
+  * Hitung ada **berapa minggu penuh** dalam 45 hari menggunakan *Floor Division* (`//`), simpan di variabel `minggu`. (*Petunjuk: 1 minggu = 7 hari*)
+  * Hitung **sisa harinya** menggunakan Modulus (`%`), simpan di variabel `sisa_hari`.
+  * Cek apakah `sisa_hari` tersebut persis sama dengan `3` menggunakan operator perbandingan (`==`), simpan hasilnya di variabel `cek_sisa`.
+  * Cetak semuanya menggunakan f-string.
+
+**Jawaban:**
+
+```python
+jumlah_hari = 45
+pekan = jumlah_hari // 7
+sisa_hari = jumlah_hari % 7
+cek_sisa = sisa_hari == 3
+
+print(f"Jumlah hari      : {jumlah_hari}")
+print(f"Minggu penuh     : {pekan}")
+print(f"Sisa hari        : {sisa_hari}")
+print(f"Apakah sisa = 3? : {cek_sisa}")
+```
+
+```terminal
+(.venv) bengs@Benkz:~/belajar-python$ python3 main.py 
+Jumlah hari      : 45
+Minggu penuh     : 6
+Sisa hari        : 3
+Apakah sisa = 3? : True
+(.venv) bengs@Benkz:~/belajar-python$ 
+```
+
+### Bagian 2
+
+**1. Penjelasan Konsep Utama: Operator Logika**
+Dalam dunia nyata, keputasan sering kali tidak hanya bergantung pada satu syarat, melainkan gabungan dari beberapa syarat. Python menggunakan tiga operator logika utama: `and`, `or`, dan `not`.
+  * `and` (**Dan**): Akan menghasilkan `True` **HANYA JIKA** semua syarat benilai `True`.
+    * *Anologi*: Syarat melamar kerja adalah "Punya Ijazah" `and` "Lulus Tes". Jika kamu punya ijazah tapi gagal tes, kamu tidak terima (`False`).
+  * `or` (**Atau**): Akan menghasilkan `True` **JIKA SALAH SATU SAJA** syarat bernilai `True`.
+    * *Anologi*: Bayar belanjaan bisa pakai "Uang Tunai" `or` "Kartu Debit". Jika kamu bawa kartu tapi tidak bawa uang tunai, kamu tetap bisa bayar (`True`).
+  * `not` (**Bukan/Kebalikan**): Membalik fakta. Jika `True` menjadi `False`, dan sebaliknya.
+
+**Contoh Kode:**
+
+```python
+punya_sim = True
+umur = 20
+
+# Syarat boleh mengemudi: Punya SIM DAN umur minimal 17 tahun
+boleh_mengemudi = punya_sim and (umur >= 17)
+print(f"Boleh mengemudi? {boleh_mengemudi}")    # Hasilnya: True
+```
+
+**2. Penjelasan Konsep Utama: Operator Assignment Gabungan (Augmented Assignment)**
+Seorang *programmer* sangat menyukai efisien (malas mengetik hal yang berulang). Jika kita memiliki variabel `skor = 10` dan ingin menambahkan 5 ke dalamnya, cara dasar yang kita gunakan adalah `skor = skor + 5`.
+Namun, di industri, kita menggunakan jalan pintas:
+  * `+=` (Tambah dan masukkan) -> `skor += 5`
+  * `-=` (Kurang dan masukkan) -> `skor -= 5`
+  * `*=` (Kali dan masukkan) -> `skor *= 2`
+
+**3. Penjelasan Konsep Utama: Operator Membership**
+Digunakan untuk mengecek apakah sebuah elemen "berada di dalam" elemen yang lebih besar. Menggunakan `in` atau `not in`.
+
+```python
+teks = "Halo Bengs, selamat pagi!"
+cek_nama = "Bengs" in teks
+print(f"Apakah ada kata Bengs? {cek_nama}")   # Hasilnya: True
+```
+
+**Kesalahan Umum & Best Practices**
+  * **Kesalahan**: Menggabungkan logikan tanpa tanda kurung yang jelas. Misalnya `a > 5 and b < 10 or c == 0`. Ini bisa membuat Python (dan kita sendiri) bingung mana yang dikerjakan duluan.
+  * **Solusi**: Selalu gunakan tanda kurung `()` untuk mengelompokkan logika agar mudah dibaca, contoh: `(a > 5 and b < 10) or (c == 0)`.
+
+**Mini Project BAB 3: Sistem Pengecekan Syarat Beasiswa**
+Untuk membuktikan kita sudah menguasai seluruh fungsi Operator dan Ekspresi, mari kita buat sebuah mesin pengecek kelulusan beasiswa.
+**Spesifikasi Tugas**:
+  * Buat variabel penampung nilai siswa: `nilai_ujian = 70` dan `kehadiran = 85`.
+  * Siswa tersebut ternyata mendapatkan nilai tambahan (*bonus*) karena aktif di kelas. Gunakan **Operator Assignment Gabungan** (`+=`) untuk menambahkan `nilai_ujian` sebanyak `10` poin.
+  * Buat variabel pengecek `lulus_beasiswa` menggunakan **Operator Logika**. Syarat lulus adalah:
+    * Nilai ujian (setelah ditambah bonus) harus **lebih besar atau sama dengan `80` DAN**
+    * Kehadiran harus **lebih besar dari** `80`.
+  * Cetak nilai hasil akhir ujian dan status kelulusan (True/False) ke layar menggunakan F-String.
+
+**Jawaban:**
+
+```python
+nilai_ujian = 70
+kehadiran = 85
+
+nilai_ujian += 10
+
+lulus_beasiswa = nilai_ujian >= 80 and kehadiran > 80
+
+print(f"Nilai Ujiah Akhir: {nilai_ujian}")
+print(f"Jumlah Kehadiran: {kehadiran}%")
+print(f"Status Beasiswa: {lulus_beasiswa}")
+```
+
+```terminal
+(.venv) bengs@Benkz:~/belajar-python$ python3 mini-projects/mini_project_3.py 
+Nilai Ujiah Akhir: 80
+Jumlah Kehadiran: 85%
+Status Beasiswa: True
+(.venv) bengs@Benkz:~/belajar-python$
+```

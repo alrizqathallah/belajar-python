@@ -26,9 +26,20 @@
 
 # print(f"Halo {nama_pengguna}, umur anda adalah {umur_pengguna} tahun")
 
+# Latihan Praktik
 # teks_berantakan = "     bENgs "
 # teks_bersih = teks_berantakan.strip().title()     # Menghapus spasi DULU, lalu membuat awalan kapital
 
 # print(f"Hasil sebelum dibersihkan: '{teks_berantakan}'")
 # print(f"Hasil sebelum dibersihkan: '{teks_bersih}'")
 
+# Latihan Praktik
+jumlah_hari = 45
+pekan = jumlah_hari // 7
+sisa_hari = jumlah_hari % 7
+cek_sisa = sisa_hari == 3
+
+print(f"Jumlah hari      : {jumlah_hari}")
+print(f"Minggu penuh     : {pekan}")
+print(f"Sisa hari        : {sisa_hari}")
+print(f"Apakah sisa = 3? : {cek_sisa}")
