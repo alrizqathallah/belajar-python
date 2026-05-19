@@ -654,3 +654,226 @@ Jumlah Kehadiran: 85%
 Status Beasiswa: True
 (.venv) bengs@Benkz:~/belajar-python$
 ```
+
+---
+
+## BAB 4: Control Flow
+
+### Bagian 1
+
+**1. Tujuan Pembelajaran**
+
+Di bab ini, kita akan belajar cara memberikan "otak" kepada program agar bisa mengambil keputusan sendiri berdasarkan kondisi tertentu, serta menyuruh asisten komputer melakukan pekerjaan yang berulang-ulang tanpa lelah.
+
+**2. Penjelasan Konsep Utama: Percabangan (`if`, `elif`, `else`)**
+
+Sejauh ini, semua program yang kita tulis berjalan lurus dari baris pertama ke baris terakhir. Namun di dunia nyata, sebuah aplikasi harus bisa membuat keputusan.
+
+  * **Apa itu Percabangan?** Ini adalah cara kita menyuruh Python mengeksekusi kode tertentu **hanya jika** sebuah kondisi terpenuhi (bernilai `true`).
+  * **Mengapa ini penting?** Bayangkan layar login. Jika *password* benar, masuk ke *dashboard*. Jika salah, tampilkan pesan *error*. Tanpa percabangan, semua alur akan dieksekusi sekaligus.
+
+**Sintaks Dasar**:
+
+* `if` (**Jika**): Pintu pertama. Akan dicek paling awal.
+* `elif` (**else if / Jika yang lain**): Pintu alternatif. Hanya dicek jika `if` di atasnya bernilai `False`. Kita bisa memakai banyak `elif`.
+* `else` (**Selain itu**): Pintu terakhir. Akan langsung dieksekusi jika semua `if` dan `elif` di atasnya `False`. Tidak perlu menuliskan kondisi di `else`.
+
+**3. Contoh Kode & Aturan Emas Indentasi**
+
+Di Python, spasi di awal baris (**indentasi**) sangatlah krusial. Indentasi (biasanya 1 kali tombol *Tab* atau 4 kali *Spasi*) digunakan untuk menandakan bahwa sebuah blok kode adalah "milik" dari `if` atau `else` diatasnya.
+
+```python
+umur = 20
+
+# Perhatikan tanda titik dua (:) di akhir setiap kondisi
+if umur < 13:
+  print("Kamu adalah anak-anak.")  # Baris ini menjorok ke dalam (Indentasi)
+elif umur < 18:
+  print("Kamu adalah remaja")
+else:
+  print("Kamu sudah dewasa")
+```
+
+**4. Visualisasi & Analogi**
+
+Bayangkan kita sedang berada di persimpangan jalan tol.
+
+  * Penjaga gerbang pertama (`if`) bertanya: "Apakah kamu membawa mobil truk?". Jika ya, kamu diarahkan ke jalur kiri. Jika tidak, kamu lanjut ke gerbang berikutnya.
+  * Penjaga gerbang kedua (`elif`) bertanya: "Apakah kamu membawa modil sedan?". Jika ya, ke lajur tengah.
+  * Jika tidak semuanya (`else`), kamu otomatis diarahkan ke jalur kanan.
+
+**5. Kesalahan Umum & Best Practices**
+
+  * **Kesalahan 1 (IndentationError)**: Lupa memberikan spasi menjorok ke dalam setelah menulis `if`. Python akan bingung dan memunculkan *error*.
+  * **Kesalahan 2 (SyntaxError)**: Lupa menambahkan titik dua (`:`) di akhir baris `if`, `elif` atau `else`.
+  * **Best Practices**: Selalu pastikan kondisi yang paling spesifik dicek terlebih dahulu di posisi `if` teratas.
+
+**Latihan Praktik BAB 4: Sistem Tiket Bioskop**
+
+**Bagian 1**
+
+**Spesifikasi Tugas:**
+
+  1.  Minta pengguna memasukkan umur mereka (gunakan `input()` dan jangan lupa ubah menjadi `int()`)
+  2.  Buat struktur percabangan (`if-elif-else`) untuk menentukan harga tiket:
+      1.  Jika umur di bawah 12 tahun (kurang dari 12), harga tiket = Rp 25.000.
+      2.  Jika umur dari 12 hingga 60 tahun, harga tiket = Rp. 50.000
+      3.  Jika umur di atas 60 tahun (Lansia), harga tiket = Rp 35.000.
+  3. Cetak harga tiket yang harus dibayar menggunakan F-string.
+
+**Jawaban:**
+
+```python
+usia_pengguna = int(input("Masukkan usia Anda saat ini: "))
+
+if usia_pengguna < 12:
+  print(f"Usia Anda adalah {usia_pengguna} tahun, harga tiket Anda adalah: Rp 25.000")
+elif usia_pengguna <= 60:
+    print(f"Usia Anda adalah {usia_pengguna} tahun, harga tiket Anda adalah: Rp 50.000")
+else:
+  print(f"Usia Anda adalah {usia_pengguna} tahun, harga tiket Anda adalah: Rp 35.000")
+```
+
+```terminal
+(.venv) bengs@Benkz:~/belajar-python$ python3 main.py
+Masukkan usia Anda saat ini: 11
+Usia Anda adalah 11 tahun, harga tiket Anda adalah: Rp 25.000
+(.venv) bengs@Benkz:~/belajar-python$ python3 main.py
+Masukkan usia Anda saat ini: 12
+Usia Anda adalah 12 tahun, harga tiket Anda adalah: Rp 50.000
+(.venv) bengs@Benkz:~/belajar-python$ python3 main.py
+Masukkan usia Anda saat ini: 25
+Usia Anda adalah 25 tahun, harga tiket Anda adalah: Rp 50.000
+(.venv) bengs@Benkz:~/belajar-python$ python3 main.py
+Masukkan usia Anda saat ini: 60
+Usia Anda adalah 60 tahun, harga tiket Anda adalah: Rp 50.000
+(.venv) bengs@Benkz:~/belajar-python$ python3 main.py
+Masukkan usia Anda saat ini: 65
+Usia Anda adalah 65 tahun, harga tiket Anda adalah: Rp 35.000
+(.venv) bengs@Benkz:~/belajar-python$ 
+```
+
+### Bagian 2
+
+**1. Tujuan Pembelajaran**
+
+Kita akan belajar cara menyuruh asisten komputer melakukan tugas yang berulang-ulang secara otomatis dalam hitungan milidetik menggunakan konsep **perulangan (loops)**.
+
+**2. Penjelasan Konsep Utama: Kenapa Butuh Perulangan?**
+
+Bayangkan kita harus mencetak teks "Halo" sebanyak 100 kali. Menulis `print("Halo")` sebanyak 100 baris tentu sangat membuang waktu. Di sinilah *Loops* berperan. Python memiliki dua jenis perulangan utama: `for` dan `while`.
+
+**A. Perulangan `for` (Untuk jumlah yang sudah pasti)**
+
+Digunakan ketika kita **sudah tahu persis** berapa kali sebuah tugas harus diulang. Di Python, `for` sering dikombinasikan dengan fungsi `range()`.
+
+```python
+# Akan mengulang sebanyak 5 kali (mulai dari 0, berhenti sebelum 5)
+for i in range(5):
+  print(f"Mengirim paket data ke-{i}")
+```
+
+*Catatan Penting: Di dunia pemrograman, komputer selalu mulai menghitung dari angka 0, bukan 1. Jadi `range(5)` akna menghasilkan angka: 0, 1, 2, 3, 4*.
+
+**B. Perulangan `while` (Selama kondisi bernilai True)**
+
+Digunakan ketikan kita **tidak tahu pasti** kapan perulangan harus berhenti, tetapi kamu tahu *syarat berhentinya*. Perulangan ini akan terus berjalan berputar-putar *selama* kondisinya masih `True`.
+
+**Visualisasi & Analogi**:
+
+Bayangkan sebuah sistem *monitoring* aplikasi.
+
+  * `for` **loop**: "Ping ke *server* persis sebanyak 4 kali lalu laporkan hasilnya." (Jumlah tugas jelas)
+  * `while` **loop**: "Terus bunyikan alarm **selama** status *server* masih *down*." (Kita tidak tahu kapan *server* menyala, alarm hanya berhenti jika status berubah menjadi *up*).
+
+```python
+status_server = "Down"
+detik = 1
+
+# Akan terus berulang SELAMA statusnya "Down"
+while status_server == "Down":
+  print(f"Detik {detik}: Server masih mati, mencoba lagi...")
+  detik += 1
+
+  # Simulasi: pada detik ke-3, server akhirnya menyala
+  if detik == 4:
+    status_server = "Up"
+    print("Server kembali online!")
+```
+
+**3. Penjelasan Konsep Utama: `break` dan `continue`**
+
+Terkadang kita perlu menginterupsi perulangan di tengah jalan.
+
+  * `break`: Menghancurkan / menghentikan perulangan secara paksa saat itu juga, meskipun tugasnya belum selesai.
+  * `continue`: Melompati sisa kode putaran saat ini, dan langsung melompat ke putaran berikutnya.
+
+```python
+for angka in range(1, 6): # Dari 1 sampai 5
+  if angka == 3:
+    print("Angka 3 dilewati!")
+    continue    # Lewati baris print di bawah ini, langsung lanjut ke 4
+
+  print(f"Memproses angka {angka}")
+```
+
+**4. Kesalahan Umum**
+
+  * **Kesalahan (Infinite Loops)**: Saat menggunakan `while`, lupa mengubah kondisi menjadi `False`. Akibatnya, program berjalan selamanya sampai komputer *hang* atau kehabisan memori.
+  * **Solusi**: Selalu pastikan ada mekanisme (seperti menambah variabel hitungan atau menggunakan `break`) agar perulangan `while` bisa berhenti. (Jika tidak sengaja terjebak *infinite loop* di terminal, tekan `Ctrl + C` untuk memaksanya berhenti).
+
+**Mini Project BAB 4: Sistem Login Terminal (Brute-Force Protection)**
+
+Mari kita gabungkan `while`, `if-else` dan `break` ke dalam satu skenario dunia nyata.
+
+**Spesifikasi Tugas:**
+
+  1.  Buat variabel `pin_rahasia` dengan nilai `"1234"`.
+  2.  Buat variabel kesempatan dengan nilai `3`.
+  3.  Gunakan perulangan `while` yang akan terus berjalan **selama** `kesempatan > 0.
+  4.  Di dalam perulangan, minta pengguna memasukkan PIN menggunakan `input()`.
+  5.  Buat percabangan:
+      1.  **Jika PIN benar**: Cetak "Login Berhasil!", lalu gunakan `break` untuk keluar dari perulangan.
+      2.  **Jika PIN salah**: kurangi variabel `kesempatan` sebanyak 1 (`kesempatan -= 1`), lalu cetak "PIN Salah. Kesempatan tersisa: [Jumlah_kesempatan]".
+  6. **Di luar/setelah** perulangan `while`, buat pengecekan `if` satu kali lagi: jika `kesempatan == 0`, cetak "Akun Terblokir!".
+
+Silakan pelajari logikanya pelan-pelan. Tulis kode dan jalankan di terminal. Uji dengan dua skenario:
+
+  1.  Skenario tebakan benar
+  2.  Skenario salah 3 kali berturut-turut sampai terblokir.
+
+**Jawaban:**
+
+```python
+pin_rahasia = "090398"
+
+kesempatan = 3
+
+while kesempatan > 0:
+  masukkan_pin = input("Masukkan PIN: ")
+  
+  if masukkan_pin == pin_rahasia:
+    print(f"Login Berhasil!")
+    break
+  else:
+    kesempatan -= 1
+    print(f"PIN Salah. Kesempatan tersisa: {kesempatan}")
+    
+if kesempatan == 0:
+  print("Akun Terblokir!")
+```
+
+```terminal
+(.venv) bengs@Benkz:~/belajar-python$ python3 mini-projects/mini_project_4.py
+Masukkan PIN: 090398
+Login Berhasil!
+(.venv) bengs@Benkz:~/belajar-python$ python3 mini-projects/mini_project_4.py
+Masukkan PIN: 001100
+PIN Salah. Kesempatan tersisa: 2
+Masukkan PIN: 112233
+PIN Salah. Kesempatan tersisa: 1
+Masukkan PIN: 332211
+PIN Salah. Kesempatan tersisa: 0
+Akun Terblokir!
+(.venv) bengs@Benkz:~/belajar-python$
+```

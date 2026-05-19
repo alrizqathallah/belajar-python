@@ -34,12 +34,23 @@
 # print(f"Hasil sebelum dibersihkan: '{teks_bersih}'")
 
 # Latihan Praktik
-jumlah_hari = 45
-pekan = jumlah_hari // 7
-sisa_hari = jumlah_hari % 7
-cek_sisa = sisa_hari == 3
+# jumlah_hari = 45
+# pekan = jumlah_hari // 7
+# sisa_hari = jumlah_hari % 7
+# cek_sisa = sisa_hari == 3
 
-print(f"Jumlah hari      : {jumlah_hari}")
-print(f"Minggu penuh     : {pekan}")
-print(f"Sisa hari        : {sisa_hari}")
-print(f"Apakah sisa = 3? : {cek_sisa}")
+# print(f"Jumlah hari      : {jumlah_hari}")
+# print(f"Minggu penuh     : {pekan}")
+# print(f"Sisa hari        : {sisa_hari}")
+# print(f"Apakah sisa = 3? : {cek_sisa}")
+
+# Latihan Praktik Bab 4
+usia_pengguna = int(input("Masukkan usia Anda saat ini: "))
+
+if usia_pengguna < 12:
+  print(f"Usia Anda adalah {usia_pengguna} tahun, harga tiket Anda adalah: Rp 25.000")
+elif usia_pengguna <= 60:
+    print(f"Usia Anda adalah {usia_pengguna} tahun, harga tiket Anda adalah: Rp 50.000")
+else:
+  print(f"Usia Anda adalah {usia_pengguna} tahun, harga tiket Anda adalah: Rp 35.000")
+
