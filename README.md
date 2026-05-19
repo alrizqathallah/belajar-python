@@ -469,6 +469,8 @@ Berapa tinggi badan mu? 170
 Halo Bengs, umurmu 28 tahun dan tinggi badanmu 1.7 meter
 ```
 
+---
+
 ## BAB 3: Operator & Ekspresi
 
 ### Bagian 1
